@@ -1,4 +1,4 @@
-const BASE = "https://api-gateway-eu.phorest.com/third-party-api-server/api";
+const BASE = "https://platform-us.phorest.com/third-party-api-server/api";
 
 function getAuthHeaders() {
   const username = process.env.PHOREST_USER;
