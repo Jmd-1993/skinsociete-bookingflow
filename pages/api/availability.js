@@ -1,6 +1,15 @@
 const { BASE, BUSINESS_ID, COTTESLOE_BRANCH, SKIN_NEEDLING_SERVICE_COTT, getAuthHeaders } = require('./_phorest');
 
 export default async function handler(req, res) {
+    // Handle CORS preflight
+  if (req.method === 'OPTIONS') {
+            res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET,POST,OPTIONS');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+    res.status(200).end();
+    return;
+  }
+
   if (req.method !== 'POST') {
     res.setHeader('Allow', ['POST']);
     res.status(405).json({ message: 'Method Not Allowed' });
